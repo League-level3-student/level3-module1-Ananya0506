@@ -19,12 +19,27 @@ public class _01_IntroToArrayLists {
              System.out.println();
          }
         // 4. Print all the Strings using a for-each loop
-
-        // 5. Print only the even numbered elements in the list.
-
-        // 6. Print all the Strings in reverse order.
-
+    	 for(String s:strings) {
+    		 System.out.println(s);
+    	 }
+   //5 even stuff
+     	 for(int i = 0; i < strings.size(); i++){
+             String s = strings.get(i);
+             if (i%2==0) {
+            	 System.out.println(s);
+             }
+         }
+    	 // 6. Print all the Strings in reverse order.
+    	 for(int i = strings.size()-1; i >-1; i--){
+             String s = strings.get(i);
+             System.out.println();
+         }  
         // 7. Print only the Strings that have the letter 'e' in them.
-        
+        for(String s: strings) {
+        	if (s.contains("e")){
+        		System.out.println(s);
+        		
+        	}
+        }
     }
 }
