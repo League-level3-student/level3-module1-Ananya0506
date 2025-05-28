@@ -3,6 +3,8 @@ package _02_LongChipCompetition;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class LongChipCompetition {
     /*
      * The Beatles are eating lunch and playing a game to see who has the
@@ -16,8 +18,23 @@ public class LongChipCompetition {
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
         lcc.initializeBeatles();
-        
+        Double d = 0.0; 
+        String n = null; 
+    	for (Beatle b : lcc.getTheBand()) {
+    		ArrayList<Chip> arr = b.getChips();
+    		for(Chip c : arr) {
+    			if (c.getLength() > d) {
+    				d = c.getLength();
+    				n = b.getName(); 
+    			} 
+				
+    	
+    		}
+    		
+    	}
+    	System.out.println(n);
     }
+    
 
     private void initializeBeatles() {
         Beatle george = new Beatle("George");
