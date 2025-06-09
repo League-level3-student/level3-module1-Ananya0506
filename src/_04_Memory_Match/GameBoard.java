@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ public class GameBoard extends JFrame implements ActionListener {
     static Card secondSelectedCard = null;
     
     // 1. Initialize TOTAL_CARDS to 2;
-    static int TOTAL_CARDS = 2;
+    static int TOTAL_CARDS = 52;
     
     ArrayList<Card> cards;
     
@@ -48,32 +49,136 @@ public class GameBoard extends JFrame implements ActionListener {
         //    Also, add action listeners to each Card object and then add each
         //    of the Card objects to the ArrayList of Cards.
         
-    for(int i = 0; i< TOTAL_CARDS; i++) {
-    	Card c = new Card(1); 
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(2); 
     	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (2) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(3); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (3) + ".png");
+    	cards.add(c);
+    	    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(4); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (4) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i<4; i++) {
+    	Card c = new Card(5); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (5) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(6); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (6) + ".png");
+    	cards.add(c);
+    
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(7); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (7) + ".png");
+    	cards.add(c);
+    
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(8); 
+    	c.addActionListener(this);
+    
+    	c.setFaceUpIcon(Card.cardImagesPath + (8) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(9); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (9) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(10); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (10) + ".png");
+    	cards.add(c);
+    
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(11); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (11) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(12); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (12) + ".png");
+    	cards.add(c);
+    	
+    }
+    for(int i = 0; i<4; i++) {
+    	Card c = new Card(13); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (13) + ".png");
     	cards.add(c);
     }
-        // 4. Use Collections.shuffle() method to randomize the order of
+    for(int i = 0; i< 4; i++) {
+    	Card c = new Card(12); 
+    	c.addActionListener(this);
+    	
+    	c.setFaceUpIcon(Card.cardImagesPath + (12) + ".png");
+    	cards.add(c);
+    	}
+    drawCards();
+    // 4. Use Collections.shuffle() method to randomize the order of
         //    the cards in the ArrayList
-        
+        Collections.shuffle(cards);
         
         // 5. Initialize the panel variable declared above
-        
+        panel = new JPanel();
         
         // 6. Add all of the Card objects to the panel
-        
+        for(int i = 0; i< TOTAL_CARDS; i++) {
+     
+        	panel.add(cards.get(i));
+        }  
+    
         
         // 7. Call the setupGui() method to set up the frame
         
-        
+        setupGui(cards);
         // 8. Call the startGame() method to start the game
-        
+        startGame();
     }
 
     // 9. Fill in the drawCards method to draw all the cards in the ArrayList.
     //    Run your code and verify 2 cards are displayed and the game works.
     public void drawCards() {
-        
+    	for(int i = 0; i< TOTAL_CARDS; i++) {
+        	
+        	cards.get(i).draw();
+        }   
     }
     
     // 10. 
