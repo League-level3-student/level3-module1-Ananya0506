@@ -49,107 +49,15 @@ public class GameBoard extends JFrame implements ActionListener {
         //    Also, add action listeners to each Card object and then add each
         //    of the Card objects to the ArrayList of Cards.
         
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(2); 
+    for(int i = 1; i<= TOTAL_CARDS; i++) {
+    	Card c = new Card(i); 
     	c.addActionListener(this);
     	
-    	c.setFaceUpIcon(Card.cardImagesPath + (2) + ".png");
+    	c.setFaceUpIcon(Card.cardImagesPath + (i) + ".png");
     	cards.add(c);
     	
     }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(3); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (3) + ".png");
-    	cards.add(c);
-    	    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(4); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (4) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i<4; i++) {
-    	Card c = new Card(5); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (5) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(6); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (6) + ".png");
-    	cards.add(c);
-    
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(7); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (7) + ".png");
-    	cards.add(c);
-    
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(8); 
-    	c.addActionListener(this);
-    
-    	c.setFaceUpIcon(Card.cardImagesPath + (8) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(9); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (9) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(10); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (10) + ".png");
-    	cards.add(c);
-    
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(11); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (11) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(12); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (12) + ".png");
-    	cards.add(c);
-    	
-    }
-    for(int i = 0; i<4; i++) {
-    	Card c = new Card(13); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (13) + ".png");
-    	cards.add(c);
-    }
-    for(int i = 0; i< 4; i++) {
-    	Card c = new Card(12); 
-    	c.addActionListener(this);
-    	
-    	c.setFaceUpIcon(Card.cardImagesPath + (12) + ".png");
-    	cards.add(c);
-    	}
+   
     drawCards();
     // 4. Use Collections.shuffle() method to randomize the order of
         //    the cards in the ArrayList
@@ -218,6 +126,7 @@ public class GameBoard extends JFrame implements ActionListener {
         if( firstSelectedCard != null && secondSelectedCard != null ) {
             
             if( firstSelectedCard.isSame(secondSelectedCard) ) {
+            	//
                 firstSelectedCard.remove();
                 secondSelectedCard.remove();
             } else {
