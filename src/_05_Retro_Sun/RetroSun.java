@@ -1,5 +1,7 @@
 package _05_Retro_Sun;
 
+import java.awt.Color;
+
 import processing.core.PApplet;
 
 /*
@@ -11,6 +13,10 @@ import processing.core.PApplet;
 public class RetroSun extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
+    float y;
+    float h;
+    float x; 
+    float w;
 
     // RGB colors
     int[] sunColors = {
@@ -31,6 +37,12 @@ public class RetroSun extends PApplet {
     public void setup() {
         // 2. Set bgColor as the background color
       background(bgColor);
+     y = 450;
+     h = 40;
+    
+     x = 200;
+    
+     w = 2 * 200;
     }
 
     @Override
@@ -66,9 +78,15 @@ noStroke();
     		if (pixels[i] == sunColors[0]) {
     			 int y = i / width;
     		        float step = map(y, 100, 500, 0, 1);
+    		        pixels[i] = interpolateColor(sunColors, step);
+    		        
+    		        
     		}
     	}
-        // If pixel[i] is the same color as the color of our circle (sunColors[0]),
+    	
+        	updatePixels();
+        
+    	// If pixel[i] is the same color as the color of our circle (sunColors[0]),
         // we need to map the pixel to a color in our sunColors[] array
         // (see 2nd gradient image in RetroSun.html)
 
@@ -98,18 +116,19 @@ noStroke();
          */
 
         // Set the fill color to the background color
-
+        	fill(bgColor);
         // To draw each rectangle we need to find its x, y, width, height
         // *The y position can be any value within the sun:
-        //  float y = width / 2;
+        	
+    
         // *The height can be any value you choose:
-        //  float h = 40;
-        // *The x position can be the center of the sun's x position minus the radius:
-        //  float x = sunCenterX - sunRadius
-        // *The width can be 2 times the radius
-        //  float w = 2 * sunRadius
+      
         
         // Do you see a section missing from the sun like in the 3rd image?
+       
+        	 
+        
+       
 
         
         /*
@@ -122,7 +141,16 @@ noStroke();
         // Decrease the y variable of the rectangular section created in PART 3.
         // If there isn't a variable, declare a float variable OUTSIDE of the
         // draw function AND initialize it in the setup() function.
-
+       
+        	
+    		 rect(x, y-=1, w,   h = map(y, 300, 500, 1, 40));
+    		 if(y<300) {
+    			 y=450;
+    			 
+    		 }
+   
+    	
+    	
         // Do you see the rectangle moving upwards?
 
         // Pick a y positon to be the location when the sections stop moving up.
@@ -137,7 +165,7 @@ noStroke();
 
         // Adjust the amount to decrease so that it disappears close to the top.
         // HINT: You can use the map() function again,
-        // h = map(y, missingSectionTopY, missingSectionBottomY, 1, 40);
+      
 
         // The map() function will make the value of h = 1 if y is at the top,
         // and h = 40 if y is at the bottom.
