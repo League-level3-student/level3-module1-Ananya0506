@@ -1,6 +1,7 @@
 package _05_Retro_Sun;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 
@@ -143,6 +144,7 @@ noStroke();
         // draw function AND initialize it in the setup() function.
        
         	
+    	
     		 rect(x, y-=1, w,   h = map(y, 300, 500, 1, 40));
     		 if(y<300) {
     			 y=450;
@@ -181,8 +183,17 @@ noStroke();
         // code you wrote for the 1 missing sun section.
         // HINT: You can use the Rectangle class defined below to create
         // a list of Rectangles.
-
-        
+    		 ArrayList<Rectangle> sections = new ArrayList<Rectangle>();
+    		 for(int i= 2; i>0; i--) {
+    			 Rectangle r = new Rectangle(x, y-=(1+ 1*i), w,   h = map(y, 300, 500, 1, 40));
+        		 sections.add(r);
+        		 rect(x, y-=1, w,   h = map(y, 300, 500, 1, 40));
+        		 if(y<300) {
+        			 y=450;
+        			 
+        		 }
+    		 	}
+    		 }
         /*
          * PART 6: Adding extras
          *
@@ -190,7 +201,7 @@ noStroke();
          * reflections and stars. See RetroSun.html in this folder for some
          * example classes
          */
-    }
+    
 
     static public void main(String[] passedArgs) {
         PApplet.main(RetroSun.class.getName());
