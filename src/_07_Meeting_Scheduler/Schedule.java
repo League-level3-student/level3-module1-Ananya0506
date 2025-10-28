@@ -6,7 +6,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 public class Schedule {
-    private HashMap<String, ArrayList<Integer>> weeklyAvailability;
+    HashMap<String, ArrayList<Integer>> weeklyAvailability;
     
     public Schedule() {
         weeklyAvailability = new HashMap<>();
