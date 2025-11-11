@@ -25,12 +25,15 @@ public class MeetingScheduler  {
      * Assume both schedules are in the same time zones
      */
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
-        Schedule s = new Schedule();
-        s.weeklyAvailability = person1.getSchedule();
+        Schedule sch = new Schedule();
         
-        System.out.println(s.weeklyAvailability);
+        for(String s : person1.weeklyAvailability.keySet()){
+        	 if(person1.weeklyAvailability.get(s) == person2.weeklyAvailability.get(s)) {
+        		 sch.addAvailability(s, person1.weeklyAvailability.get(s));
+        	 }
+        }
         
-		return s;
+		
         
     }
 }
