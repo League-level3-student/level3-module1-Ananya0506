@@ -32,12 +32,13 @@ public class MeetingScheduler  {
 			 if(s.equals(s2)) {
 				 
 				for(int i: person1.weeklyAvailability.get(s)) {
+					for(int i2 : person2.weeklyAvailability.get(s))
+						 if(i==i2) {
 					System.out.println(s);
 					System.out.println(i);
 					sch.addAvailability(s2, i);
 				}
-
-
+				}
 			}
 		}
 		return sch;
