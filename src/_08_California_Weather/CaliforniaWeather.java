@@ -32,11 +32,14 @@ import javax.swing.JOptionPane;
 public class CaliforniaWeather {
     static String weather; 
 	static String city; 
+	static String lowTemp;
+	static String highTemp;
 	public static void main(String[] args) {
 		//city = JOptionPane.showInputDialog("enter a city to get its weather conditions and temperature!");
-		weather = JOptionPane.showInputDialog("enter a type of weather and get the cities that have that weather!");
-		
-		start(); 
+		//weather = JOptionPane.showInputDialog("enter a type of weather and get the cities that have that weather!");
+		lowTemp = JOptionPane.showInputDialog("enter a MINIMUM temperature so we can find a city that falls into the category!");
+		highTemp = JOptionPane.showInputDialog("now, enter a MAXIMUM temperature so we can find a city that falls into the category!");
+		TempToCity(); 
 	}
 	
      static void start() {
@@ -55,20 +58,44 @@ public class CaliforniaWeather {
     }
      static void WeatherToCity() {
          HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
-         
-         for(String city: weatherData.keySet()) {
-        System.out.println(city);	 
-         }
-         // All city keys have the first letter capitalized of each word
-         WeatherData ww = weatherData.get(weatherData);
-         WeatherData datum = weatherData.get(ww);
-         
-         if( datum == null ) {
-             System.out.println("Unable to find cities for: " + ww);
-         } else {
-            // System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
-         }
-      
-     }
 
+         //System.out.println(weatherData);
+//         WeatherData datum;
+//         
+         for(String city: weatherData.keySet()) {
+  
+  if(weatherData.get(city).weatherSummary.equals(weather)){
+	  
+	  System.out.println(city);
+	  
+  } else {
+	  
+  }
+      
+         }
 }
+         static void TempToCity() {
+             HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+
+             //System.out.println(weatherData);
+//             WeatherData datum;
+//             
+             for(String city: weatherData.keySet()) {
+      
+      if(weatherData.get(city).weatherSummary.equals(weather)){
+    	  
+    	  System.out.println(city);
+    	  
+      } else {
+    	  
+      }
+         
+          
+
+             }
+         
+         
+         }
+     
+     
+     }
