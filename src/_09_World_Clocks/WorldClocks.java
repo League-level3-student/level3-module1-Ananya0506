@@ -3,6 +3,7 @@ package _09_World_Clocks;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -46,13 +47,16 @@ public class WorldClocks implements ActionListener {
     String city;
     String dateStr;
     String timeStr;
+    HashMap worldClocks;
     
     public WorldClocks() {
-        clockUtil = new ClockUtilities();
+    	worldClocks = new HashMap<String, TimeZone>();
+    	clockUtil = new ClockUtilities();
 
         // The format for the city must be: city, country (all caps)
-        city = "Chicago, US";
-        timeZone = clockUtil.getTimeZoneFromCityName(city);
+        //for(String s: worldClocks.get()) {
+    	
+        //timeZone = clockUtil.getTimeZoneFromCityName(s);
         
         Calendar calendar = Calendar.getInstance(timeZone);
         String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
@@ -70,13 +74,14 @@ public class WorldClocks implements ActionListener {
         frame.setSize(100, 100);
         frame.add(panel);
         panel.add(textArea);
-        textArea.setText(city + "\n" + dateStr);
+       // textArea.setText(s + "\n" + dateStr);
         
         // This Timer object is set to call the actionPerformed() method every
         // 1000 milliseconds
         timer = new Timer(1000, this);
         timer.start();
-    }
+        }
+    //}
 
     @Override
     public void actionPerformed(ActionEvent arg0) {

@@ -32,14 +32,19 @@ import javax.swing.JOptionPane;
 public class CaliforniaWeather {
     static String weather; 
 	static String city; 
-	static String lowTemp;
-	static String highTemp;
+	static Double lowTemp;
+	static Double highTemp;
+	static String temp1; 
+	static String temp2; 
 	public static void main(String[] args) {
 		//city = JOptionPane.showInputDialog("enter a city to get its weather conditions and temperature!");
 		//weather = JOptionPane.showInputDialog("enter a type of weather and get the cities that have that weather!");
-		lowTemp = JOptionPane.showInputDialog("enter a MINIMUM temperature so we can find a city that falls into the category!");
-		highTemp = JOptionPane.showInputDialog("now, enter a MAXIMUM temperature so we can find a city that falls into the category!");
+		temp1 = JOptionPane.showInputDialog("enter a MINIMUM temperature so we can find a city that falls into the category!");
+		temp2 = JOptionPane.showInputDialog("now, enter a MAXIMUM temperature so we can find a city that falls into the category!");
+		lowTemp = Double.parseDouble(temp1);
+		highTemp = Double.parseDouble(temp2);
 		TempToCity(); 
+		
 	}
 	
      static void start() {
@@ -82,20 +87,25 @@ public class CaliforniaWeather {
 //             
              for(String city: weatherData.keySet()) {
       
-      if(weatherData.get(city).weatherSummary.equals(weather)){
+      if(weatherData.get(city).temperatureF >= lowTemp){
+    	  
+    	  if(weatherData.get(city).temperatureF <= highTemp){
+    	  
+    	  
     	  
     	  System.out.println(city);
     	  
-      } else {
-    	  
+     JOptionPane.showMessageDialog(null, "check the console!");
+     
+      }
+
+      
       }
          
-          
-
-             }
-         
-         
-         }
      
+         }
+             
+      JOptionPane.showMessageDialog(null, "Sorry, there are no cities in california that fit within that weather range :(");
      
      }
+}
