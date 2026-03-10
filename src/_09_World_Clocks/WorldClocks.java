@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
@@ -44,19 +45,41 @@ public class WorldClocks implements ActionListener {
     JPanel panel;
     JTextArea textArea;
     
-    String city;
+    String city1;
+    String city2;
+    String city3;
+    String city4;
+    String city5;
     String dateStr;
     String timeStr;
     HashMap worldClocks;
+    CityData data = new CityData(); 
     
     public WorldClocks() {
     	worldClocks = new HashMap<String, TimeZone>();
     	clockUtil = new ClockUtilities();
 
         // The format for the city must be: city, country (all caps)
-        //for(String s: worldClocks.get()) {
+    	frame = new JFrame();
+        panel = new JPanel();
+        textArea = new JTextArea();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        frame.setSize(100, 100);
+        frame.add(panel);
+    	for(int i=0; i<5; i++) {
     	
-        //timeZone = clockUtil.getTimeZoneFromCityName(s);
+    	city1 = JOptionPane.showInputDialog("Enter a city and the corresponding country(abbreviation in all caps) to get its time zone info-- make sure the city is capitalized properly!");
+       
+       data.setName(city1);
+       
+       data.getCountry();
+    	
+    	
+        timeZone = clockUtil.getTimeZoneFromCityName(data.getName());
+        Calendar c = Calendar.getInstance(timeZone);
+        
+        System.out.println("Full date and time: " + c.getTime());
         
         Calendar calendar = Calendar.getInstance(timeZone);
         String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
@@ -64,15 +87,9 @@ public class WorldClocks implements ActionListener {
         dateStr = dayOfWeek + " " + month + " " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.YEAR);
         
         System.out.println(dateStr);
-
+        
         // Sample starter program
-        frame = new JFrame();
-        panel = new JPanel();
-        textArea = new JTextArea();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.setSize(100, 100);
-        frame.add(panel);
+        // THE LINE BELOW IS WHERE THE PROBLEM ISSSSSS
         panel.add(textArea);
        // textArea.setText(s + "\n" + dateStr);
         
@@ -81,6 +98,7 @@ public class WorldClocks implements ActionListener {
         timer = new Timer(1000, this);
         timer.start();
         }
+    }
     //}
 
     @Override
@@ -91,7 +109,7 @@ public class WorldClocks implements ActionListener {
         timeStr = militaryTime + twelveHourTime;
         
         System.out.println(timeStr);
-        textArea.setText(city + "\n" + dateStr + "\n" + timeStr);
+        textArea.setText(data.getName() + "\n" + dateStr + "\n" + timeStr);
         frame.pack();
     }
 }
